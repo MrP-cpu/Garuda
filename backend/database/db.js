@@ -28,8 +28,8 @@ const authenticationDataSchema = new mongoose.Schema({
 })
 
 const documentSchema= new mongoose.Schema({
-    aadhar: Number,
-    mobile: Number
+    aadhar: String,
+    mobile: String
 })
 
 const User = mongoose.model("user",userSchema);

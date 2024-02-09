@@ -1,7 +1,8 @@
 const express = require('express');
 const router  = express.Router();
 // const userSchema = require("../types/user");
-const { User } = require('../database/db');
+const { User, Documents } = require('../database/db');
+const { Document } = require('mongoose');
 
 
 router.post("/signup", async(req,res)=>{
@@ -34,4 +35,29 @@ router.post("/signup", async(req,res)=>{
         })
     }
 })
+
+router.post("/documents" , async (req,res)=>{
+    aadhar: req.body.aadhar;
+    mobile: req.body.mobile;
+
+    const newDoc = await Documents.create({
+        aadhar: req.body.aadhar,
+        mobile: req.body.mobile,
+
+    })
+    if(newDoc){
+        res.json({
+            msg: "Document added"
+        })
+    }
+    else{
+        res.status(500).json({
+            msg: "Internal Server Error"
+        })
+    }
+
+
+})
+
+
 module.exports= router;

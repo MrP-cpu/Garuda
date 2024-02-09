@@ -1,12 +1,12 @@
 const zod = require('zod');
 
 const userSchema = zod.object({
-    firstName: zod.string().min(3),
+    firstName: zod.string(),
     lastName: zod.string(),
-    email: zod.string().email(),
-    password: zod.string().min(8),
+    email: zod.string(),
+    password: zod.string(),
     dob: zod.string(),
-    mobile: zod.number(10)
+    mobile: zod.number()
 })
 
 const adminSchema = zod.object({
